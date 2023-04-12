@@ -135,7 +135,6 @@ public class DienThoaiActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
     private void Anhxa() {

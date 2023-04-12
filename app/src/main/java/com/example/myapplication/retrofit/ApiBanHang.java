@@ -4,6 +4,7 @@ package com.example.myapplication.retrofit;
 import com.example.myapplication.model.DonHangModel;
 import com.example.myapplication.model.LoaiSpModel;
 import com.example.myapplication.model.SanPhamMoiModel;
+import com.example.myapplication.model.ThongKeModel;
 import com.example.myapplication.model.UserModel;
 
 import io.reactivex.rxjava3.core.Observable;
@@ -21,6 +22,9 @@ public interface ApiBanHang {
 
     @GET("getspmoi.php")
     Observable<SanPhamMoiModel> getSpMoi();
+
+    @GET("thongke.php")
+    Observable<ThongKeModel> getThongKe();
 
 
     //POST DATA
@@ -75,5 +79,34 @@ public interface ApiBanHang {
     @FormUrlEncoded
     Observable<SanPhamMoiModel> search(
             @Field("search") String search
+    );
+
+    @POST("xoa.php")
+    @FormUrlEncoded
+    Observable<SanPhamMoiModel> xoaSanPham(
+            @Field("id") int id
+    );
+
+
+    @POST("themsp.php")
+    @FormUrlEncoded
+    Observable<UserModel> ThemSP(
+            @Field("tensanpham") String tensanpham,
+            @Field("giasanpham") String giasanpham,
+            @Field("hinhanh") String hinhanh,
+            @Field("mota") String mota,
+            @Field("loai") int loai
+
+    );
+
+    @POST("sua.php")
+    @FormUrlEncoded
+    Observable<UserModel> suaSanPham(
+            @Field("tensanpham") String tensanpham,
+            @Field("giasanpham") String giasanpham,
+            @Field("hinhanh") String hinhanh,
+            @Field("mota") String mota,
+            @Field("loai") int loai,
+            @Field("id") int id
     );
 }

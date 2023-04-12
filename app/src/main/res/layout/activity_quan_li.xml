@@ -7,113 +7,43 @@
     tools:context=".activity.QuanLiActivity"
     android:background="@color/background_color">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:background="#B2B4C1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="Quản lí">
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                app:title="Quản lí"
+                android:background="#B2B4C1"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+                <ImageView
+                    android:id="@+id/imgthem"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/ic_baseline_add_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </androidx.appcompat.widget.Toolbar>
 
-    <LinearLayout
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <soup.neumorphism.NeumorphCardView
-            android:id="@+id/create"
-            style="@style/neumorphircard"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="10dp"
-            app:neumorph_backgroundColor="@color/background_color"
-            app:neumorph_shadowColorLight="@color/shadow_color">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/ic_baseline_add_circle_24" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="Thêm"
-                    android:textStyle="bold"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_ql"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"></androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
-        </soup.neumorphism.NeumorphCardView>
-        <soup.neumorphism.NeumorphCardView
-            android:id="@+id/update"
-            style="@style/neumorphircard"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="10dp"
-            app:neumorph_backgroundColor="@color/background_color"
-            app:neumorph_shadowColorLight="@color/shadow_color">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+        </LinearLayout>
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/ic_baseline_auto_fix_normal_24" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="Sửa"
-                    android:textStyle="bold"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-            </LinearLayout>
-        </soup.neumorphism.NeumorphCardView>
-        <soup.neumorphism.NeumorphCardView
-            android:id="@+id/delete"
-            style="@style/neumorphircard"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="10dp"
-            app:neumorph_backgroundColor="@color/background_color"
-            app:neumorph_shadowColorLight="@color/shadow_color">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/ic_baseline_delete_24" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="Xóa"
-                    android:textStyle="bold"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-            </LinearLayout>
-        </soup.neumorphism.NeumorphCardView>
-
-
-    </LinearLayout>
-
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

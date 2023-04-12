@@ -30,6 +30,19 @@ android {
     packagingOptions {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
+
+    buildscript {
+        ext.kotlin_version = '1.4.10'
+
+        dependencies {
+            classpath 'com.android.tools.build:gradle:4.0.0-alpha07'
+        }
+    }
+
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -62,4 +75,11 @@ dependencies {
     implementation 'com.airbnb.android:lottie:6.0.0'
     //neumorphism
     implementation 'com.github.fornewid:neumorphism:0.3.0'
+
+    implementation 'androidx.ui:ui-tooling:0.1.0-dev02'
+    implementation 'androidx.ui:ui-layout:0.1.0-dev02'
+    implementation 'androidx.ui:ui-material:0.1.0-dev02'
+
+    //mpchartandroid
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

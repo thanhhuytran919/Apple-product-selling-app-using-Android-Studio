@@ -16,12 +16,14 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <ImageView
-                android:layout_margin="10dp"
                 android:id="@+id/itemsp_image"
-                android:src="@drawable/ic_media_24"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"/>
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_media_24" />
+
             <TextView
                 android:id="@+id/itemsp_ten"
                 android:text="Laptop"

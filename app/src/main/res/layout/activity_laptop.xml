@@ -30,7 +30,6 @@
                 android:layout_gravity="top|right"
                 android:layout_width="28dp"
                 android:layout_height="28dp"/>
-
         </FrameLayout>
     </androidx.appcompat.widget.Toolbar>
     <androidx.recyclerview.widget.RecyclerView

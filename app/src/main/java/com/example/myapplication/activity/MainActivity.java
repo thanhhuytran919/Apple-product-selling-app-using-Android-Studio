@@ -112,9 +112,12 @@ public class MainActivity extends AppCompatActivity {
                     case 6:
                         Intent quanli = new Intent(getApplicationContext(), QuanLiActivity.class);
                         startActivity(quanli);
-                        finish();
                         break;
                     case 7:
+                        Intent thongke = new Intent(getApplicationContext(), ThongKeActivity.class);
+                        startActivity(thongke);
+                        break;
+                    case 8:
                         //xoa key user
                         Paper.book().delete("user");
                         Intent dangnhap = new Intent(getApplicationContext(), DangNhapActivity.class);
@@ -152,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                         loaiSpModel ->  {
                             if (loaiSpModel.isSuccess()) {
                                 mangloaisp = loaiSpModel.getResult();
-                                mangloaisp.add(new LoaiSp("Quản lí","https://icons.veryicon.com/png/o/system/icon-library/account-management-12.png"));
+                                mangloaisp.add(new LoaiSp("Thống kê","https://www.iconpacks.net/icons/1/free-chart-icon-646-thumb.png"));
                                 mangloaisp.add(new LoaiSp("Đăng xuất","https://www.pngfind.com/pngs/m/585-5857042_logout-icon-png-transparent-png.png"));
                                 loaiSpAdapter = new LoaiSpAdapter(getApplicationContext(),mangloaisp);
                                 listViewManHinhChinh.setAdapter(loaiSpAdapter);
