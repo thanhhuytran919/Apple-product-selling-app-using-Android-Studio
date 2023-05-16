@@ -12,6 +12,8 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -32,7 +34,9 @@ import com.example.myapplication.model.User;
 import com.example.myapplication.retrofit.ApiBanHang;
 import com.example.myapplication.retrofit.RetrofitClient;
 import com.example.myapplication.utils.Utils;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.nex3z.notificationbadge.NotificationBadge;
 
 import java.util.ArrayList;
@@ -71,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
             Utils.user_current = user;
         }
 
+        getToken();
+
         Anhxa();
         ActionBar();
         ActionViewFlipper();
@@ -84,6 +90,28 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Không có internet, vui lòng kết nối...", Toast.LENGTH_LONG).show();
 
         }
+    }
+
+    private void getToken(){
+        FirebaseMessaging.getInstance().getToken()
+                .addOnSuccessListener(new OnSuccessListener<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        if (!TextUtils.isEmpty(s)){
+                            compositeDisposable.add(apiBanHang.suaToken(Utils.user_current.getId(),s)
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(
+                                            messageModel -> {
+
+                                            },
+                                            throwable -> {
+                                                Log.d("log", throwable.getMessage());
+                                            }
+                                    ));
+                        }
+                    }
+                });
     }
 
     private void getEventClick() {
@@ -213,6 +241,10 @@ public class MainActivity extends AppCompatActivity {
         //khoi tao list
         mangloaisp = new ArrayList<>();
         mangSpMoi = new ArrayList<>();
+
+        if(Paper.book().read("giohang") != null) {
+            Utils.manggiohang = Paper.book().read("giohang");
+        }
         if (Utils.manggiohang == null){
             Utils.manggiohang = new ArrayList<>();
         }else {

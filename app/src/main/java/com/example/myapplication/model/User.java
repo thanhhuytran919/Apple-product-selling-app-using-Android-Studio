@@ -7,6 +7,16 @@ public class User {
     String username;
     String numberphone;
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    String user;
+
     public int getId() {
         return id;
     }

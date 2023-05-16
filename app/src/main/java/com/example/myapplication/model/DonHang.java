@@ -9,6 +9,15 @@ public class DonHang {
     String sdt;
     String tongtien;
     List<Item> item;
+    int trangthai;
+
+    public int getTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(int trangthai) {
+        this.trangthai = trangthai;
+    }
 
     public int getId() {
         return id;

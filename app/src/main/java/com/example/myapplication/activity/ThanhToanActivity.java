@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.myapplication.R;
+import com.example.myapplication.model.GioHang;
 import com.example.myapplication.retrofit.ApiBanHang;
 import com.example.myapplication.retrofit.RetrofitClient;
 import com.example.myapplication.utils.Utils;
@@ -22,6 +23,7 @@ import com.google.gson.Gson;
 
 import java.text.DecimalFormat;
 
+import io.paperdb.Paper;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -86,7 +88,15 @@ public class ThanhToanActivity extends AppCompatActivity {
                             .subscribe(
                                     userModel -> {
                                         Toast.makeText(getApplicationContext(), "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
+                                        for (int i = 0 ; i < Utils.mangmuahang.size() ; i++){
+                                            GioHang gioHang = Utils.manggiohang.get(i);
+                                            if(Utils.manggiohang.contains(gioHang)){
+                                                Utils.manggiohang.remove(gioHang);
+                                            }
+                                        }
+
                                         Utils.mangmuahang.clear();
+                                        Paper.book().write("giohang", Utils.manggiohang);
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                         startActivity(intent);
                                         finish();

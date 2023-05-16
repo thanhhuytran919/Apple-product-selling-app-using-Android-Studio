@@ -102,7 +102,7 @@
             android:layout_marginLeft="10dp"
             android:id="@+id/phonenumber"
             android:layout_marginRight="10dp"
-            android:inputType="textPassword"
+            android:inputType="number"
             android:hint="Số điện thoại"
             android:drawableLeft="@drawable/ic_baseline_local_phone_24"
             android:drawablePadding="5dp"
